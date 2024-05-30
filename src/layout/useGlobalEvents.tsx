@@ -104,20 +104,36 @@ export function useGlobalEvent() {
     setConnectState((state) => ({ ...state, isLogining: true }));
     const IMToken = (await getIMToken()) as string;
     const IMUserID = (await getIMUserID()) as string;
-    try {
-      await IMSDK.login({
-        userID: IMUserID,
-        token: IMToken,
-        platformID: window.electronAPI?.getPlatform() ?? 5,
-        apiAddr: getApiUrl(),
-        wsAddr: getWsUrl(),
-        logLevel: LogLevel.Debug,
-      });
-      initStore();
-    } catch (error) {
-      console.error(error);
-      if ((error as WsResponse).errCode !== 10102) {
-        navigate("/login");
+    if (IMToken && IMUserID) {
+      try {
+        if (window.electronAPI) {
+          await IMSDK.initSDK({
+            platformID: window.electronAPI?.getPlatform() ?? 5,
+            apiAddr: getApiUrl(),
+            wsAddr: getWsUrl(),
+            dataDir: window.electronAPI.getDataPath("userData"),
+            logLevel: LogLevel.Debug,
+            isLogStandardOutput: true,
+          });
+          await IMSDK.login({
+            userID: IMUserID,
+            token: IMToken,
+          });
+        } else {
+          await IMSDK.login({
+            userID: IMUserID,
+            token: IMToken,
+            platformID: 5,
+            apiAddr: getApiUrl(),
+            wsAddr: getWsUrl(),
+          });
+        }
+        initStore();
+      } catch (error) {
+        console.error(error);
+        if ((error as WsResponse).errCode !== 10102) {
+          navigate("/login");
+        }
       }
     }
     setConnectState((state) => ({ ...state, isLogining: false }));

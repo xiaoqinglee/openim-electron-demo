@@ -20,12 +20,6 @@ import { areaCode } from "./areaCode";
 import type { FormType } from "./index";
 import styles from "./index.module.scss";
 
-// 0login 1resetPassword 2register
-enum LoginType {
-  Password,
-  VerifyCode,
-}
-
 type LoginFormProps = {
   setFormType: (type: FormType) => void;
   loginMethod: "phone" | "email";
@@ -45,6 +39,7 @@ const LoginForm = ({ loginMethod, setFormType, updateLoginMethod }: LoginFormPro
     if (params.email) {
       setEmail(params.email);
     }
+    params.password = md5(params.password ?? "");
     login(params, {
       onSuccess: (data) => {
         const { chatToken, imToken, userID } = data.data;

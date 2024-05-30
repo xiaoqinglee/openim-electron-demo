@@ -13,6 +13,8 @@
   •
   <a href="https://github.com/openimsdk/open-im-sdk-web-wasm">openim-sdk-wasm</a>
   •
+  <a href="https://github.com/openimsdk/openim-sdk-electron">openim-sdk-electron</a>
+  •
   <a href="https://github.com/openimsdk/openim-sdk-core">openim-sdk-core</a>
 </p>
 
@@ -23,7 +25,7 @@ OpenIM Electron Demo is an open-source instant messaging application built on Op
 ## Tech Stack 🛠️
 
 - This is a [`Electron`](https://www.electronjs.org/) project bootstrapped with [`Vite`](https://vitejs.dev/).
-- App is built with [openim-sdk-wasm](https://github.com/openimsdk/open-im-sdk-web-wasm) library.
+- App is built with [openim-sdk-wasm](https://github.com/openimsdk/open-im-sdk-web-wasm) and [openim-sdk-electron](https://github.com/openimsdk/openim-sdk-electron) library.
 
 ## Live Demo 🌐
 

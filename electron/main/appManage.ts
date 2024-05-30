@@ -67,6 +67,12 @@ export const setAppGlobalData = () => {
     distPath,
     publicPath,
     asarPath,
+    imsdkLibPath: isProd
+      ? join(
+          asarPath,
+          "/app.asar.unpacked/node_modules/@openim/electron-client-sdk/assets",
+        )
+      : join(__dirname, "../../node_modules/@openim/electron-client-sdk/assets"),
     trayIcon: join(publicPath, `/icons/${isWin ? "icon.ico" : "tray.png"}`),
     indexHtml: join(distPath, "index.html"),
     splashHtml: join(distPath, "splash.html"),

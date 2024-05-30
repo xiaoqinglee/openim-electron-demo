@@ -41,8 +41,11 @@ export const setIpcMainListener = () => {
       case "public":
         e.returnValue = global.pathConfig.publicPath;
         break;
+      case "userData":
+        e.returnValue = app.getPath("userData");
+        break;
       default:
-        e.returnValue = global.pathConfig.publicPath;
+        e.returnValue = "";
         break;
     }
   });

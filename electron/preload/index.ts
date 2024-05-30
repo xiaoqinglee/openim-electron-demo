@@ -1,9 +1,10 @@
 import fs from "fs";
 import path from "path";
-import os from "os";
 import { DataPath, IElectronAPI } from "./../../src/types/globalExpose.d";
-import { contextBridge, ipcRenderer, shell } from "electron";
+import { contextBridge, ipcRenderer } from "electron";
 import { isProd } from "../utils";
+
+import "@openim/electron-client-sdk/lib/preload";
 
 const getPlatform = () => {
   if (process.platform === "darwin") {
@@ -19,6 +20,8 @@ const getDataPath = (key: DataPath) => {
   switch (key) {
     case "public":
       return isProd ? ipcRenderer.sendSync("getDataPath", "public") : "";
+    case "userData":
+      return ipcRenderer.sendSync("getDataPath", "userData");
     default:
       return "";
   }

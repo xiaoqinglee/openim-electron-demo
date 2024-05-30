@@ -13,6 +13,8 @@
   •
   <a href="https://github.com/openimsdk/open-im-sdk-web-wasm">openim-sdk-wasm</a>
   •
+  <a href="https://github.com/openimsdk/openim-sdk-electron">openim-sdk-electron</a>
+  •
   <a href="https://github.com/openimsdk/openim-sdk-core">openim-sdk-core</a>
 </p>
 
@@ -23,7 +25,7 @@ OpenIM Electron Demo 是一个基于`openim-sdk-wasm`、`openim-server`和`Elect
 ## 技术栈 🛠️
 
 - 这是一个使用 [`Electron`](https://www.electronjs.org/) 和 [`Vite`](https://vitejs.dev/) 构建的项目。
-- 应用程序使用了 [openim-sdk-wasm](https://github.com/openimsdk/open-im-sdk-web-wasm) 库构建。
+- 应用程序使用了 [openim-sdk-wasm](https://github.com/openimsdk/open-im-sdk-web-wasm)、[openim-sdk-electron](https://github.com/openimsdk/openim-sdk-electron) 库构建。
 
 ## 在线演示 🌐
 

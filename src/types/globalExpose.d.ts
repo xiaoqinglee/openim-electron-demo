@@ -1,6 +1,6 @@
 import { Platform } from "open-im-sdk-wasm";
 
-export type DataPath = "public";
+export type DataPath = "public" | "userData";
 
 export interface IElectronAPI {
   getDataPath: (key: DataPath) => string;
@@ -12,11 +12,7 @@ export interface IElectronAPI {
   unsubscribeAll: (channel: string) => void;
   ipcInvoke: <T = unknown>(channel: string, ...arg: any) => Promise<T>;
   ipcSendSync: <T = unknown>(channel: string, ...arg: any) => T;
-  saveFileToDisk: (params: {
-    file: File;
-    type: "fileCache" | "sentFileCache";
-    sync?: boolean;
-  }) => Promise<string>;
+  saveFileToDisk: (params: { file: File; sync?: boolean }) => Promise<string>;
 }
 
 declare global {

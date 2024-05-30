@@ -10,6 +10,9 @@ export interface FileWithPath extends File {
 
 export function useFileMessage() {
   const getImageMessage = async (file: FileWithPath) => {
+    if (window.electronAPI) {
+      return (await IMSDK.createImageMessageFromFullPath(file.path!)).data;
+    }
     const { width, height } = await getPicInfo(file);
     const baseInfo = {
       uuid: uuidV4(),
@@ -31,6 +34,19 @@ export function useFileMessage() {
   };
 
   const getVideoMessage = async (file: FileWithPath, snapShotFile: FileWithPath) => {
+    if (window.electronAPI) {
+      return (
+        await IMSDK.createVideoMessageFromFullPath({
+          videoPath: file.path!,
+          snapshotPath: await window.electronAPI.saveFileToDisk({
+            file: snapShotFile,
+            sync: true,
+          }),
+          videoType: file.type,
+          duration: await getMediaDuration(URL.createObjectURL(file)),
+        })
+      ).data;
+    }
     const { width, height } = await getPicInfo(snapShotFile);
     const options = {
       videoFile: file,
