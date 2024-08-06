@@ -1,5 +1,5 @@
+import { MessageStatus, MessageType } from "@openim/wasm-client-sdk";
 import { Image, Spin } from "antd";
-import { MessageStatus, MessageType } from "open-im-sdk-wasm";
 import { FC } from "react";
 
 import { useVideoPlayer } from "@/pages/common/VideoPlayerModal";

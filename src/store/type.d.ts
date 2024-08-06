@@ -9,7 +9,7 @@ import {
   GroupMemberItem,
   MessageItem,
   SelfUserInfo,
-} from "open-im-sdk-wasm/lib/types/entity";
+} from "@openim/wasm-client-sdk/lib/types/entity";
 
 import { BusinessUserInfo } from "@/api/login";
 
